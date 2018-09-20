@@ -1,0 +1,52 @@
+{include file='header' /} 
+    <main>
+        {empty name="categorynavs[$cate_id]['thumb']"}    
+        <img src="/{$categorynavs[$base_id]['thumb']}" alt="" class="img-responsive" width="100%">
+        {else}
+        <img src="/{$categorynavs[$cate_id]['thumb']}" alt="" class="img-responsive" width="100%">
+        {/empty}
+        <section class="news_detail">
+            <header>
+                <div class="container">
+                    <div class="menu_card">
+                       <img src="__GX__\asset\images\icon_right.png" class="img-responsive pull-right">
+                        <h1>{$categorynavs[$base_id]['name']}</h1>
+                        <div class="line"></div>
+                        <p>{$categorynavs[$base_id]['alias']}</p>
+                    </div>
+                    <ul class="menu">
+                        {volist name='secondnav' id='v'}
+                        <li {eq name="cate_id" value="$v['id']" }class="active"{/eq} ><a href="{:url('/news',['cid'=>$v.id])}">{$v.name}</a></li>
+                        {/volist}
+                    </ul>
+                </div>
+            </header>
+            <div class="news_detail_body">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        {include file='catpos' /}
+                    </ol>
+                    <article class="news_detail_content">
+                        <header>
+                            <h2>{$info['title']}</h2>
+                            <img src="__GX__\asset\images\icon_time.jpg"><time> 发布时间：{$info['create_time']|date="Y-m-d",###}</time>
+                            <img src="__GX__\asset\images\icon_author.jpg"><span> 发布人：{$info.author}</span>
+                        </header>
+                        <div class="news_detail_text">
+                           {$info.content}
+                        </div>
+                        <footer>
+                            <nav>
+                                <ul class="pager">
+                                    <li class="previous"><a href="{notempty name='prev_article'}{:url('/newsshow',['cid'=>$cate_id,'id'=>$prev_article['id']])}{else}###{/notempty}"><span aria-hidden="true">&lt;</span>&nbsp;&nbsp;上一篇</a></li>
+                                    <li class="text-center"><a href="{:url('/news')}"><span class="glyphicon glyphicon-menu-hamburger"></span></a></li>
+                                    <li class="next"><a href="{notempty name='next_article'}{:url('/newsshow',['cid'=>$cate_id,'id'=>$next_article['id']])}{else}###{/notempty}">下一篇&nbsp;&nbsp;<span aria-hidden="true">&gt;</span></a></li>
+                                </ul>
+                            </nav>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+  {include file='footer' /} 

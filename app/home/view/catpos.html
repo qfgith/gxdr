@@ -1,0 +1,9 @@
+  
+<li><a href="{:url('/')}"><img src="__GX__\asset\images\icon_home.png" alt=""> 首页</a></li>
+<!--关于我们，专业服务 联系我们-->
+{in name="base_id" value='46,58,63'}  
+<li class="active">{$pagenavs[$cate_id]['name']}</li>
+{else}
+<li class="active">{$categorynavs[$cate_id]['name']}</li>
+{/in}
+

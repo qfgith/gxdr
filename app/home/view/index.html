@@ -1,0 +1,286 @@
+{include file='header' /}
+    <main>
+        <div class="top swiper-container">
+            <div class="swiper-wrapper">
+                {volist name='slide_index' id='v'}
+                <div class="swiper-slide">
+                    <img src="__GX__/asset/images/w1920h640.png" alt="" class="img-responsive" style="background: url('{$v.image}') no-repeat center center / cover">
+                </div>
+                {/volist}
+            </div>
+        </div>
+        <!-- banner end -->
+
+        <!--about -->
+        <section class="about">
+            <div class="container">
+                <h1><span class="text_blue">关于</span>我们</h1>
+                <div class="about_p">
+                    <p><?php echo nl2br($aboutintro);?></p>
+                </div>
+                <div class="service_list">
+                    <ul class="row">
+                        <li class="col-lg-3 service_item">
+                            <img src="__GX__\asset\images\w150h150.png" style="background: url('__GX__/asset/images/service1.png') no-repeat center center / cover;" width="150">
+                            <p>涉诉知识产权鉴定服务</p>
+                        </li>
+                        <li class="col-lg-3 service_item">
+                            <img src="__GX__\asset\images\w150h150.png" style="background: url('__GX__/asset/images/service2.png') no-repeat center center / cover;" width="150">
+                            <p>涉诉电子数据鉴定服务</p>
+                        </li>
+                        <li class="col-lg-3 service_item">
+                            <img src="__GX__\asset\images\w150h150.png" style="background: url('__GX__/asset/images/service3.png') no-repeat center center / cover;" width="150">
+                            <p>商事鉴定服务</p>
+                        </li>
+                        <li class="col-lg-3 service_item">
+                            <img src="__GX__\asset\images\w150h150.png" style="background: url('__GX__/asset/images/service4.png') no-repeat center center / cover;" width="150">
+                            <p>电子数据存证服务</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!--team-->
+        <section class="team">
+            <div class="container">
+                <h1><span class="text_blue">专家</span>团队</h1>
+                <ul class="row">
+                    {volist name='pos_team' id='v'}
+                    <li class="col-lg-3">
+                        <div class="person">
+                            <header>
+                                <h2>{$v['title']}</h2>
+                                <div class="line"></div>
+                                <h3>{$v['title2']}</h3>
+                                <p class="email">{$v['email']}</p>
+                            </header>
+                            <div class="person_p">
+                                <p><?php echo str_cut(nl2br($v['content']),500 )?></p>
+                            </div>
+                        </div>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+        </section>
+        <section class="case">
+            <div class="container">
+                <h1><span class="text_blue">案例</span>展示</h1>
+
+                <div class="case_tab">
+                    <ul class="case_nav">
+                        {volist name='anli_nav' id='v'}
+                        <li {eq name="key" value="0" }class="active"{/eq}><a href="#zscq{$key}" data-toggle="tab">{$v['name']}</a></li>
+                        {/volist}
+                    </ul>
+
+                    <div class="tab-content">
+                        {volist name='anli_nav' id='v'}
+                       
+                        <div class='tab-pane fade {eq name="key" value="0"}in active{/eq}' id="zscq{$key}">
+
+                            
+                            <div class="row">
+                               {volist name="v['list']" id='vo' key='k'}
+                                <div class="col-lg-6" data-id={$k}>
+                                    <div class="case_p">
+                                        <h4><a href="{:url('/casesshow',['id'=>$vo.id])}">{$vo['title']}</a></h4>
+                                        <p>{$vo['introduction']|str_cut=###,200}</p>
+                                    </div>
+                                </div>
+                            
+                            <?php if($k%2==0){?>
+                            
+                            </div>  
+                            <div class="row">
+                            <?php }?>
+
+                                {/volist}
+                            </div>
+                            
+                        </div>
+                        {/volist}
+                       
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!--news-->
+        <section class="news">
+            <div class="container">
+                <h1><span class="text_blue">新闻</span>资讯</h1>
+
+                <div class="news_banner">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            {volist name='pos_news' id='v'}
+                            <div class="swiper-slide">
+                                {if condition="$v['cid'] eq 9"}
+                                <a href="{:url('/newsshow',['cid'=>9,'id'=>$v.id])}" class="news_card">
+                                {else}
+                                <a href="{:url('/newsshow',['cid'=>10,'id'=>$v.id])}" class="news_card">
+                                {/if}
+                                    <div class="news_card_img">
+                                        <img src="__GX__/asset/images/w350h209.png" alt="" width="100%" style="background: url('{$v.thumb}') no-repeat center center / 100% 100%;">
+                                    </div>
+                                    <div class="news_card_p">
+                                        <h4>{$v['title']|str_cut=###,30}</h4>
+                                        <time>{$v['create_time']|date="Y-m-d",###}</time>
+                                        <p>{$v['introduction']|str_cut=###,80}</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            
+                            {/volist}
+                            <!-- <div class="swiper-slide">
+                                <a href="" class="news_card">
+                                    <div class="news_card_img">
+                                        <img src="asset/images/w350h209.png" alt="" width="100%" style="background: url('asset/images/news_banner2.jpg') no-repeat center center / 100% 100%;">
+                                    </div>
+                                    <div class="news_card_p">
+                                        <h4>国家版权局等四部委启动“剑网2018”</h4>
+                                        <time>2016-08-09</time>
+                                        <p>近日，国家版权局、国家互联网信息办公室、工业和信息化部、公安部联合召开新闻通气会，通报启动打击网络侵权盗版......</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="" class="news_card">
+                                    <div class="news_card_img">
+                                        <img src="asset/images/w350h209.png" alt="" width="100%" style="background: url('asset/images/news_3.jpg') no-repeat center center / 100% 100%;">
+                                    </div>
+                                    <div class="news_card_p">
+                                        <h4>国家版权局等四部委启动“剑网2018”</h4>
+                                        <time>2016-08-09</time>
+                                        <p>近日，国家版权局、国家互联网信息办公室、工业和信息化部、公安部联合召开新闻通气会，通报启动打击网络侵权盗版......</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="" class="news_card">
+                                    <div class="news_card_img">
+                                        <img src="asset/images/w350h209.png" alt="" width="100%" style="background: url('asset/images/news_banner4.jpg') no-repeat center center / 100% 100%;">
+                                    </div>
+                                    <div class="news_card_p">
+                                        <h4>国家版权局等四部委启动“剑网2018”</h4>
+                                        <time>2016-08-09</time>
+                                        <p>近日，国家版权局、国家互联网信息办公室、工业和信息化部、公安部联合召开新闻通气会，通报启动打击网络侵权盗版......</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="" class="news_card">
+                                    <div class="news_card_img">
+                                        <img src="asset/images/w350h209.png" alt="" width="100%" style="background: url('asset/images/news_banner1.jpg') no-repeat center center / 100% 100%;">
+                                    </div>
+                                    <div class="news_card_p">
+                                        <h4>国家版权局等四部委启动“剑网2018”</h4>
+                                        <time>2016-08-09</time>
+                                        <p>近日，国家版权局、国家互联网信息办公室、工业和信息化部、公安部联合召开新闻通气会，通报启动打击网络侵权盗版......</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="" class="news_card">
+                                    <div class="news_card_img">
+                                        <img src="asset/images/w350h209.png" alt="" width="100%" style="background: url('asset/images/news_banner2.jpg') no-repeat center center / 100% 100%;">
+                                    </div>
+                                    <div class="news_card_p">
+                                        <h4>国家版权局等四部委启动“剑网2018”</h4>
+                                        <time>2016-08-09</time>
+                                        <p>近日，国家版权局、国家互联网信息办公室、工业和信息化部、公安部联合召开新闻通气会，通报启动打击网络侵权盗版......</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="" class="news_card">
+                                    <div class="news_card_img">
+                                        <img src="asset/images/w350h209.png" alt="" width="100%" style="background: url('asset/images/news_3.jpg') no-repeat center center / 100% 100%;">
+                                    </div>
+                                    <div class="news_card_p">
+                                        <h4>国家版权局等四部委启动“剑网2018”</h4>
+                                        <time>2016-08-09</time>
+                                        <p>近日，国家版权局、国家互联网信息办公室、工业和信息化部、公安部联合召开新闻通气会，通报启动打击网络侵权盗版......</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="" class="news_card">
+                                    <div class="news_card_img">
+                                        <img src="asset/images/w350h209.png" alt="" width="100%" style="background: url('asset/images/news_banner4.jpg') no-repeat center center / 100% 100%;">
+                                    </div>
+                                    <div class="news_card_p">
+                                        <h4>国家版权局等四部委启动“剑网2018”</h4>
+                                        <time>2016-08-09</time>
+                                        <p>近日，国家版权局、国家互联网信息办公室、工业和信息化部、公安部联合召开新闻通气会，通报启动打击网络侵权盗版......</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="" class="news_card">
+                                    <div class="news_card_img">
+                                        <img src="asset/images/w350h209.png" alt="" width="100%" style="background: url('asset/images/news_banner1.jpg') no-repeat center center / 100% 100%;">
+                                    </div>
+                                    <div class="news_card_p">
+                                        <h4>国家版权局等四部委启动“剑网2018”</h4>
+                                        <time>2016-08-09</time>
+                                        <p>近日，国家版权局、国家互联网信息办公室、工业和信息化部、公安部联合召开新闻通气会，通报启动打击网络侵权盗版......</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="" class="news_card">
+                                    <div class="news_card_img">
+                                        <img src="asset/images/w350h209.png" alt="" width="100%" style="background: url('asset/images/news_banner2.jpg') no-repeat center center / 100% 100%;">
+                                    </div>
+                                    <div class="news_card_p">
+                                        <h4>国家版权局等四部委启动“剑网2018”</h4>
+                                        <time>2016-08-09</time>
+                                        <p>近日，国家版权局、国家互联网信息办公室、工业和信息化部、公安部联合召开新闻通气会，通报启动打击网络侵权盗版......</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="" class="news_card">
+                                    <div class="news_card_img">
+                                        <img src="asset/images/w350h209.png" alt="" width="100%" style="background: url('asset/images/news_3.jpg') no-repeat center center / 100% 100%;">
+                                    </div>
+                                    <div class="news_card_p">
+                                        <h4>国家版权局等四部委启动“剑网2018”</h4>
+                                        <time>2016-08-09</time>
+                                        <p>近日，国家版权局、国家互联网信息办公室、工业和信息化部、公安部联合召开新闻通气会，通报启动打击网络侵权盗版......</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="" class="news_card">
+                                    <div class="news_card_img">
+                                        <img src="asset/images/w350h209.png" alt="" width="100%" style="background: url('asset/images/news_banner4.jpg') no-repeat center center / 100% 100%;">
+                                    </div>
+                                    <div class="news_card_p">
+                                        <h4>国家版权局等四部委启动“剑网2018”</h4>
+                                        <time>2016-08-09</time>
+                                        <p>近日，国家版权局、国家互联网信息办公室、工业和信息化部、公安部联合召开新闻通气会，通报启动打击网络侵权盗版......</p>
+                                    </div>
+                                </a>
+                            </div> -->
+                        </div>
+                    </div>
+
+                    <div class="news_banner_tool">
+                        <!-- 分页器 -->
+                        <div class="swiper-pagination"></div>
+                        <!-- 导航按钮 -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{include file='footer' /}

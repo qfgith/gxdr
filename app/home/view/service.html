@@ -1,0 +1,33 @@
+{include file='header' /}
+    <main>
+        {include file='banner' /}
+        <section class="service">
+            <header>
+                <div class="container">
+                    <div class="menu_card">
+                        <img src="__GX__\asset\images\icon_right.png" class="img-responsive pull-right">
+                        <h1>{$pagenavs[$base_id]['name']}</h1>
+                        <div class="line"></div>
+                        <p>{$pagenavs[$base_id]['alias']}</p>
+                    </div>
+                    <ul class="menu">
+
+                        {volist name='secondnav' id='v'}
+                        <li {eq name="cate_id" value="$v['id']" }class="active"{/eq} ><a href="{:url('service',['cid'=>$v['id']])}">{$v['name']}</a></li>
+                        {/volist}
+                    </ul>
+                </div>
+            </header>
+            <div class="service_body">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        {include file='catpos' /}
+                    </ol>
+                    <div class="service_content">
+                        {$info.content}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{include file='footer' /}

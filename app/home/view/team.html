@@ -1,0 +1,72 @@
+{include file='header' /}
+    <main>
+        <img src="/{$pagenavs['thumb']}" alt="" class="img-responsive" width="100%">
+        <section class="service">
+            <header>
+                <div class="container">
+                    <div class="menu_card">
+                        <img src="__GX__\asset\images\icon_right.png" class="img-responsive pull-right">
+                        <h1>{$categorynavs[$base_id]['name']}</h1>
+                        <div class="line"></div>
+                        <p>{$categorynavs[$base_id]['alias']}</p>
+                    </div>
+                    <ul class="menu">
+                        <li><a href="{:url('/team')}">{$categorynavs[$base_id]['name']}</a></li>
+                    </ul>
+                </div>
+            </header>
+            <div class="team_body">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        {include file='catpos' /}
+                    </ol>
+                </div>
+                <div class="team_content">
+                    <div class="container">
+                        <div class="team_introduce">
+                            <h2>拥有丰富行业经验的资深专业团队</h2>
+                            <p>{$categorynavs[$base_id]['content']}</p>
+                        </div>
+                    </div>
+                    <div class="evaluation_team">
+                        <div class="container">
+                            <h2><img src="__GX__\asset\images\icon_team.png" alt=""> 评估团队</h2>
+                        </div>
+                        <ul class="team_list">
+                            {volist name='list' id='v'}
+                            <li class="team_item">
+                                <div class="container">
+                                    <div class="row">
+                                        {volist name="v['pseron1']" id='vv'}
+                                        <div class="col-lg-6">
+                                            <p>{$vv['title']}</p>
+                                            <p>{$vv['title1']}</p>
+                                            <p>{$vv['title2']}</p>
+                                            <img src="__GX__\asset\images\icon_plus.svg" width="30" class="icon_plus">
+                                        </div>
+                                        {/volist}
+                                        
+                                    </div>
+                                </div>
+                                <div class="detail">
+                                    <div class="arrow"></div>
+                                    {volist name="v['pseron1']" id='vv'}
+                                    <div class="container">
+                                        <p>{$vv['content']}</p>
+                                    </div>
+                                    {/volist}
+                                    
+                                </div>
+                            </li>
+                            {/volist}
+                         
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{include file='footer' /}    
+<script src="__GX__\lib\jquery-3.3.1\jquery.min.js"></script>
+<script src="__GX__\asset\js\team.js"></script>

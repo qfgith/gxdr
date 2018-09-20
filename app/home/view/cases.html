@@ -1,0 +1,61 @@
+{include file='header' /} 
+    <main>
+        <img src="/{$pagenavs['thumb']}" alt="" class="img-responsive" width="100%">
+        <section class="service">
+            <header>
+                <div class="container">
+                    <div class="menu_card">
+                        <img src="__GX__\asset\images\icon_right.png" class="img-responsive pull-right">
+                        <h1>{$categorynavs[$base_id]['name']}</h1>
+                        <div class="line"></div>
+                        <p>{$categorynavs[$base_id]['alias']}</p>
+                    </div>
+                    <ul class="menu">
+                        <li><a href="{:url('/cases')}">{$categorynavs[$base_id]['name']}</a></li>
+                    </ul>
+                </div>
+            </header>
+            <div class="case_body">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        {include file='catpos' /}
+                    </ol>
+                    <div class="case_content">
+                        <ul class="case_list">
+                            {volist name='secondnav' id='v'}
+                            <li class="case_item">
+                                <div class="title">
+                                    <img src="__GX__\asset\images\icon_plus2.svg" width="21" class="pull-right"> {$v['name']}
+                                </div>
+                                <div class="content">
+                                    <table class="case_table">
+                                        <thead>
+                                            <tr>
+                                                <th>委托方</th>
+                                                <th>案件名称</th>
+                                                <th>案件介绍</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {volist name="v['list']" id='vv'}
+                                            <tr>
+                                                <td><a href="{:url('/casesshow',['id'=>$vv.id])}" title="{$vv['title1']}"><p>{$vv['title1']}</p></a></td>
+                                                <td><a href="{:url('/casesshow',['id'=>$vv.id])}" title="{$vv['title']}"><p>{$vv['title']}</p></a></td>
+                                                <td><a href="{:url('/casesshow',['id'=>$vv.id])}" title="{$vv['introduction']}"><p>{$vv['introduction']|str_cut=###,70}</p></a></td>
+                                            </tr>
+                                            {/volist}
+                                           
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                            {/volist}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{include file='footer' /} 
+<script src="__GX__\lib\jquery-3.3.1\jquery.min.js"></script>
+<script src="__GX__\asset\js\case.js"></script>

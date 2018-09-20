@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{if isset($site_title)}{$site_title}-{/if}{$webset['site_title']}</title>
+    <link rel="stylesheet" href="__GX__\lib\bootstrap-3.3.7\css\bootstrap.min.css">
+    <link rel="stylesheet" href="__GX__\lib\swiper-4.3.3\css\swiper.min.css">
+    <link rel="stylesheet" href="__GX__\asset\css\style.css">
+    <meta name='keywords' value="{$webset['seo_title']}">
+    <meta name='description' value="{$webset['seo_descition']}">
+</head>
+
+<body {if isset($ishome)}id="page_index"{/if}>
+
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{:url('/')}">
+                        <img src="__GX__\asset\images\logo.jpg" alt="logo" height="100%">
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li {if isset($ishome)}class="active"{/if} ><a href="{:url('/')}"><span>首页</span></a></li>
+                        <li {if isset($this_nav_1)}class="active"{/if} ><a href="{:url('/about')}"><span>关于我们</span></a></li>
+                        <li {if isset($this_nav_2)}class="active"{/if}><a href="{:url('/service')}"><span>专业服务</span></a></li>
+                        <li {if isset($this_nav_3)}class="active"{/if}><a href="{:url('/team')}"><span>专业团队</span></a></li>
+                        <li {if isset($this_nav_4)}class="active"{/if}><a href="{:url('/cases')}"><span>成功案例</span></a></li>
+                        <li {if isset($this_nav_5)}class="active"{/if}><a href="{:url('/news')}"><span>新闻资讯</span></a></li>
+                        <li {if isset($this_nav_6)}class="active"{/if}><a href="{:url('/contact')}"><span>联系我们</span></a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </header>
+    

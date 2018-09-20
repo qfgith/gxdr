@@ -1,0 +1,136 @@
+
+    <footer>
+        <div class="container">
+            <div class="footer1">
+                <div class="left">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <!--关于我们-->
+                            <h4>{$about['name']}</h4>
+                            <ul>
+                                {volist name="about['child']" id='vv'}
+                                <li>
+                                    <a href="{:url('/about',['cid'=>$vv.id])}">{$vv['name']}</a>
+                                </li>
+                                {/volist}
+                            </ul>
+                        </div>
+
+                        <!--专业服务-->
+                        <div class="col-lg-2">
+                            <h4>{$service['name']}</h4>
+                            <ul>
+                                {volist name="service['child']" id='vv'}
+                                <li>
+                                    <a href="{:url('/service',['cid'=>$vv.id])}">{$vv['name']}</a>
+                                </li>
+                                {/volist}
+                            </ul>
+                        </div>
+                        <div class="col-lg-2">
+                            <h4>专家团队</h4>
+                            <ul>
+                                
+                            </ul>
+                        </div>
+                        <div class="col-lg-2">
+                            <h4>成功案例</h4>
+                            <ul>
+                               
+                            </ul>
+                        </div>
+
+                        <!--news-->
+                        <div class="col-lg-2">
+                            <h4>{$news['name']}</h4>
+                            <ul>
+                                {volist name="news['child']" id='vv'}
+                                <li>
+                                    <a href="{:url('/news',['cid'=>$vv.id])}">{$vv['name']}</a>
+                                </li>
+                                {/volist}
+                            </ul>
+                        </div>
+                        <div class="col-lg-2">
+                            <h4>{$contacts['name']}</h4>
+                            <ul>
+                                {volist name="contacts['child']" id='vv'}
+                                <li>
+                                    <a href="{:url('/contact',['cid'=>$vv.id])}">{$vv['name']}</a>
+                                </li>
+                                {/volist}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <h4>关注我们</h4>
+                    <img src="/{$webset['site_code']}" alt="二维码" class="pull-left img-responsive">
+                    <p>工信赛瑞（深圳）知识产权研究院官方微信</p>
+                    <small>更多精彩等着你！</small>
+                </div>
+            </div>
+            <div class="footer2">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="__GX__\asset\images\icon_tel.png" alt="电话" class="img-responsive pull-left">
+                        <div class="tel">
+                            <small>欢迎您来电咨询！</small>
+                            <p>{$webset['site_tel']}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-5 email">
+                                <p>咨询邮箱：</p>
+                                <small>{$webset['site_email']}</small>
+                            </div>
+                            <div class="col-lg-7 address">
+                                <p>地址：</p>
+                                <address>{$webset['site_address']}</address>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer3">
+                <div class="pull-left">
+                    工信赛瑞（深圳）知识产权研究院 Copyright&copy; 2018, sunqin.com. All rights reserved
+                </div>
+                <div class="pull-right">晋ICP备15050430号</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="__GX__\lib\jquery-3.3.1\jquery.min.js"></script>
+    <script src="__GX__\lib\bootstrap-3.3.7\js\bootstrap.min.js"></script>
+    <script src="__GX__\lib\swiper-4.3.3\js\swiper.min.js"></script>
+    <script>
+        new Swiper('.top.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 5000
+            }
+        });
+
+        new Swiper('.news_banner .swiper-container', {
+            loop: true,
+            slidesPerView: 4,
+            slidesPerGroup: 4,
+            spaceBetween: 30,
+
+            // 分页器
+            pagination: {
+                el: '.news_banner .swiper-pagination',
+            },
+
+            // 前进后退按钮
+            navigation: {
+                nextEl: '.news_banner .swiper-button-next',
+                prevEl: '.news_banner .swiper-button-prev',
+            }
+        });
+    </script>
+</body>
+
+</html>
